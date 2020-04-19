@@ -32,6 +32,11 @@ class Piece(ABC):
     def in_default_position(self):
         return ~self.last_move_index
 
+    @property
+    @abstractmethod
+    def label(self):
+        pass
+
     @abstractmethod
     def move_options(self, board_state:List[Piece], move_list:List[str], attack_values:List[List[int]]) -> List[Move]:
         pass
@@ -49,20 +54,7 @@ class Move:
             piece.last_move_index = len(move_list)
 
     def __str__(self):
-        def map_piece_to_prefix(piece):
-            if isinstance(piece, Pawn):
-                return ''
-            elif isinstance(piece, Knight):
-                return 'N'
-            elif isinstance(piece, Bishop):
-                return 'B'
-            elif isinstance(piece, Rook):
-                return 'R'
-            elif isinstance(piece, Queen):
-                return 'Q'
-            elif isinstance(piece, King):
-                return 'K'
-        def map_position_to_suffix(position):
-            return chr(ord('a') + position[0]) + str(position[1] + 1)
-        return ', '.join([map_piece_to_prefix(piece) + map_position_to_suffix(piece.position) + '->' + map_position_to_suffix(position)
+        def map_position_to_suffix(position) -> str:
+            return str(chr(ord('a') + position[0]) + str(position[1] + 1))
+        return ', '.join([piece.label + map_position_to_suffix(piece.position) + '->' + map_position_to_suffix(position)
                           for piece, position in zip(self.pieces_to_update, self.positions)])

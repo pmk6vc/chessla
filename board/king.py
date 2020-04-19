@@ -7,6 +7,10 @@ class King(Piece):
     def __init__(self, position:Tuple[int, int], is_white:bool):
         super().__init__(position, is_white)
 
+    @property
+    def label(self):
+        return 'K'
+
     def consider_castle(self, board_state:List[Piece], attack_values:List[List[int]], occupied_squares:Set[Tuple[int, int]], move_options:List[Move],
                         required_rook_square:Tuple[int, int], squares_in_between:List[Tuple[int, int]], new_rook_square:Tuple[int, int], new_king_square:Tuple[int, int]):
         # If king has moved, do not castle

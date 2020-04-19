@@ -6,6 +6,10 @@ class Knight(Piece):
     def __init__(self, position: Tuple[int, int], is_white: bool):
         super().__init__(position, is_white)
 
+    @property
+    def label(self):
+        return 'N'
+
     def move_options(self, board_state:List[Piece], move_list:List[str], attack_values:List[List[int]]) -> List[Move]:
         options = []
         occupied_squares_other_color = set(piece.position for piece in board_state if piece.is_white != self.is_white)
@@ -13,7 +17,7 @@ class Knight(Piece):
 
         horizontal_offsets = [-2, -1, 1, 2]
         for horizontal_offset in horizontal_offsets:
-            for vertical_offset in [2 / horizontal_offset, -2 / horizontal_offset]:
+            for vertical_offset in [int(2 / horizontal_offset), int(-2 / horizontal_offset)]:
                 square = (self.position[0] + horizontal_offset, self.position[1] + vertical_offset)
                 if square not in occupied_squares:
                     options.append(Move(

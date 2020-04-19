@@ -6,6 +6,10 @@ class Bishop(Piece):
     def __init__(self, position: Tuple[int, int], is_white: bool):
         super().__init__(position, is_white)
 
+    @property
+    def label(self):
+        return 'B'
+
     def move_options(self, board_state:List[Piece], move_list:List[str], attack_values:List[List[int]]) -> List[Move]:
         options = []
         occupied_squares_other_color = set(piece.position for piece in board_state if piece.is_white != self.is_white)

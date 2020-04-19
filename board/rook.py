@@ -6,5 +6,9 @@ class Rook(Piece):
     def __init__(self, position: Tuple[int, int], is_white: bool):
         super().__init__(position, is_white)
 
+    @property
+    def label(self):
+        return 'R'
+
     def move_options(self, board_state:List[Piece], move_list:List[str], attack_values:List[List[int]]) -> List[Move]:
         return []
