@@ -1,5 +1,5 @@
 from typing import Tuple
-from board.pieces import Piece
+from board.piece import Piece
 
 
 class Queen(Piece):

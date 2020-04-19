@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from board.pieces import Piece, Move
+from board.piece import Piece, Move
 
 
 class Rook(Piece):

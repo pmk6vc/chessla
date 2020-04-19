@@ -1,5 +1,5 @@
 from typing import List, Tuple, Type
-from board.pieces import Piece, Pawn, King, Rook
+from board.piece import Piece, Pawn, King, Rook
 
 
 class BoardManager:

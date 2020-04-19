@@ -1,5 +1,5 @@
 from typing import List, Tuple, Optional
-from board.pieces import Piece, Move
+from board.piece import Piece, Move
 from board.bishop import Bishop
 from board.knight import Knight
 from board.rook import Rook
