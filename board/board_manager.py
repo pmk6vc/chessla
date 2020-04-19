@@ -23,10 +23,11 @@ class BoardManager:
 
     def retrieve_move_options(self) -> List[Tuple[int, int]]:
         # TODO: Check for discovered check and prune list here - can be done in each piece's class but want to avoid replicated code
-        # TODO: Check for out of bounds
         for piece in self.board_state:
             for move in piece.move_options(self.board_state, self.move_list, self.retrieve_attack_values()):
-                print(str(move))
+                for position in move.positions:
+                    if position != (None, None) and max(position) <= 7 and min(position) >= 0:
+                        print(str(move))
         pass
 
     def retrieve_attack_values(self):
