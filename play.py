@@ -1,4 +1,4 @@
-from board.boardManager import BoardManager
+from board.board_manager import BoardManager
 
 
 if __name__ == '__main__':
