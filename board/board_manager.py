@@ -1,11 +1,19 @@
 from typing import List, Tuple, Type
-from board.piece import Piece, Pawn, King, Rook
+from board.piece import Piece
+from board.pawn import Pawn
+from board.king import King
+from board.knight import Knight
+from board.bishop import Bishop
+from board.rook import Rook
+from board.queen import Queen
 
 
 class BoardManager:
     def __init__(self):
         self._board_state = [Pawn(position=(x, 1), is_white=True) for x in range(8)] + \
             [King(position=(4, 0), is_white=True)] + \
+            [Knight(position=(1, 0), is_white=True), Knight(position=(6, 0), is_white=True)] + \
+            [Bishop(position=(2, 0), is_white=True), Knight(position=(5, 0), is_white=True)] + \
             [Rook(position=(0, 0) ,is_white=True), Rook(position=(7, 0), is_white=True)]
         self.move_list = []
 
